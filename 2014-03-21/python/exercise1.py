@@ -1,3 +1,16 @@
+from pyplasm import *
+
+def colorRGB(rgb):
+	r,g,b = rgb
+	return [float(r)/255,float(g)/255,float(b)/255]
+	
+def sphere1(p):
+	a,r = p
+	return [r*COS(a),r*SIN(a)]
+	
+lightGrey = colorRGB([224,228,227])
+darkGrey = colorRGB([161,161,161])
+brown = colorRGB([125,73,0])
 roomsColor = [0.643,0.552,0.376]
 # common elements
 
@@ -5,10 +18,6 @@ bigBase = PROD([QUOTE([20]),QUOTE([18])])
 littleBase = PROD([QUOTE([-6,8,-6]),QUOTE([-18,3])])
 baseFloor = STRUCT([bigBase, littleBase])
 
-
-def sphere1(p):
-	a,r = p
-	return [r*COS(a),r*SIN(a)]
 circularRoom = T([1,2])([10,9])(MAP(sphere1)(PROD([INTERVALS(2*PI)(32), Q(3)])))
 
 internalLongWalls = PROD([QUOTE([-6,1,-6,1,-6]), QUOTE([-1,17])])
@@ -67,5 +76,6 @@ floor2 = floor1
 floor3 = baseFloor
 
 two_and_half_model = STRUCT([floor0, T(3)(6)(floor1), T(3)(12)(floor2), T(3)(18)(floor3)])
+
 #VIEW(two_and_half_model)
 
