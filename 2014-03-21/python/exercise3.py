@@ -63,19 +63,38 @@ westNeutral_3D = extrudeZ(1)(westNeutral)
 westBorders_3D = extrudeZ(1)(westBorders)
 west_3D = STRUCT([COLOR(lightGrey)(westNeutral_3D), COLOR(darkGrey)(westBorders_3D)])
 
+#westLittle
+westLittleNeutral_3D = extrudeZ(1)(westLittleNeutral)
+westLittleBorders_3D = extrudeZ(1)(westLittleBorders)
+westLittle_3D = STRUCT([COLOR(lightGrey)(westLittleNeutral_3D), COLOR(darkGrey)(westLittleBorders_3D)])
+
+#eastLittle
+eastLittle_3D = westLittle_3D
+
 #east
 east_3D = west_3D
 
+#southLateral
+southLateralNeutral_3D = extrudeZ(1)(southLateralNeutral)
+southLateralBorders_3D = extrudeZ(1)(southLateralBorders)
+southLateral_3D = STRUCT([COLOR(lightGrey)(southLateralNeutral_3D), COLOR(darkGrey)(southLateralBorders_3D)])
+
+#southCentral
+southCentralNeutral_3D = extrudeZ(1)(southCentralNeutral)
+southCentralBorders_3D = extrudeZ(1)(southCentralBorders)
+southCentralDoor_3D = extrudeZ(1)(southCentralDoor)
+southCentralStatues_3D = extrudeZ(1)(southCentralStatues)
+southCentral_3D = STRUCT([ COLOR(lightGrey)(southCentralNeutral_3D), COLOR(darkGrey)(southCentralBorders_3D), COLOR(darkGrey)(southCentralStatues_3D)])
 
 verticalNorth_3D = T(2)(0.9)(R([2,3])(PI/2)(north_3D))
 verticalEast_3D = R([1,2])(PI/2)(R([2,3])(PI/2)(east_3D))
 verticalWest_3D = T(1)(19)(R([1,2])(PI/2)(R([2,3])(PI/2)(west_3D)))
-# verticalSouthLateral1_3D = T(2)(18)(R([2,3])(PI/2)(southLateral1_3D))
-# verticalSouthLateral2_3D = T([1,2])([14,18])(R([2,3])(PI/2)(southLateral2_3D))
-# verticalSouthCentral_3D = T([1,2])([6,21])(R([2,3])(PI/2)(southCentral_3D))
-# verticalWestLittle_3D = T([1,2])([6,18])(R([1,2])(PI/2)(R([2,3])(PI/2)(westLittle_3D)))
-# verticalEastLittle_3D = T([1,2])([14,18])(R([1,2])(PI/2)(R([2,3])(PI/2)(eastLittle_3D)))
+verticalSouthLateral1_3D = T(2)(18)(R([2,3])(PI/2)(southLateral_3D))
+verticalSouthLateral2_3D = T([1,2])([14,18])(R([2,3])(PI/2)(southLateral_3D))
+verticalSouthCentral_3D = T([1,2])([6,21])(R([2,3])(PI/2)(southCentral_3D))
+verticalWestLittle_3D = T([1,2])([6,18])(R([1,2])(PI/2)(R([2,3])(PI/2)(westLittle_3D)))
+verticalEastLittle_3D = T([1,2])([13,18])(R([1,2])(PI/2)(R([2,3])(PI/2)(eastLittle_3D)))
 
+solid_model_3D = STRUCT([internal_model_3D, verticalNorth_3D, verticalWest_3D, verticalEast_3D, verticalSouthLateral1_3D, verticalSouthLateral2_3D, verticalSouthCentral_3D, verticalWestLittle_3D, verticalEastLittle_3D])
 
-solid_model_3D = STRUCT([internal_model_3D, verticalNorth_3D, verticalWest_3D, verticalEast_3D])
 VIEW(solid_model_3D)
