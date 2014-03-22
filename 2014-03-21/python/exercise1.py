@@ -66,6 +66,6 @@ floor2 = floor1
 
 floor3 = baseFloor
 
-building = STRUCT([floor0, T(3)(6)(floor1), T(3)(12)(floor2), T(3)(18)(floor3)])
-VIEW(building)
+two_and_half_model = STRUCT([floor0, T(3)(6)(floor1), T(3)(12)(floor2), T(3)(18)(floor3)])
+#VIEW(two_and_half_model)
 
