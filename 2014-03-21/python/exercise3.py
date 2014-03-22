@@ -95,6 +95,7 @@ verticalSouthCentral_3D = T([1,2])([6,21])(R([2,3])(PI/2)(southCentral_3D))
 verticalWestLittle_3D = T([1,2])([6,18])(R([1,2])(PI/2)(R([2,3])(PI/2)(westLittle_3D)))
 verticalEastLittle_3D = T([1,2])([13,18])(R([1,2])(PI/2)(R([2,3])(PI/2)(eastLittle_3D)))
 
-solid_model_3D = STRUCT([internal_model_3D, verticalNorth_3D, verticalWest_3D, verticalEast_3D, verticalSouthLateral1_3D, verticalSouthLateral2_3D, verticalSouthCentral_3D, verticalWestLittle_3D, verticalEastLittle_3D])
+street = DIFFERENCE([T([1,2])([-15,-10])(CUBOID([50,20,6])),CUBOID([20,20,20])])
+solid_model_3D = STRUCT([street, internal_model_3D, verticalNorth_3D, verticalWest_3D, verticalEast_3D, verticalSouthLateral1_3D, verticalSouthLateral2_3D, verticalSouthCentral_3D, verticalWestLittle_3D, verticalEastLittle_3D])
 
-VIEW(solid_model_3D)
+#VIEW(solid_model_3D)
