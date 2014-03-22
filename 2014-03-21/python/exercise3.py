@@ -23,7 +23,7 @@ lateralRooms0_3D = extrudeZ(1)(lateralRooms0)
 
 rooms0_3D = STRUCT([centralRooms_3D,lateralRooms0_3D])
 
-floor0_3D = STRUCT([COLOR(darkGrey)(baseFloor_3D), COLOR(lightGrey)(internalWalls0_3D), COLOR(roomsColor)(rooms0_3D)])
+floor0_3D = STRUCT([baseFloor_3D, COLOR([0.5,0.5,0.5])(internalWalls0_3D), COLOR(roomsColor)(rooms0_3D)])
 
 #floor1 3d
 
@@ -37,13 +37,13 @@ lateralRooms1_3D = extrudeZ(1)(lateralRooms1)
 
 rooms1_3D = STRUCT([centralRooms_3D,lateralRooms1_3D])
 
-floor1_3D = STRUCT([COLOR(darkGrey)(baseFloor_3D), COLOR(lightGrey)(internalWalls1_3D), COLOR(roomsColor)(rooms1_3D)])
+floor1_3D = STRUCT([baseFloor_3D, COLOR([0.5,0.5,0.5])(internalWalls1_3D), COLOR(roomsColor)(rooms1_3D)])
 
 #floor2 3d
 floor2_3D = floor1_3D
 
 #floor3 3d
-floor3_3D = STRUCT([COLOR(darkGrey)(baseFloor_3D)])
+floor3_3D = STRUCT([baseFloor_3D])
 
 internal_model_3D = STRUCT([floor0_3D, T(3)(6)(floor1_3D), T(3)(12)(floor2_3D), T(3)(18)(floor3_3D)])
 
