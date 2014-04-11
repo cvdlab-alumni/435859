@@ -84,7 +84,7 @@ internalWalls3 = DIFFERENCE([internalWalls3temp, blockRoom3])
 floor3 = STRUCT([baseFloor, COLOR([0.5,0.5,0.5])(internalWalls3), COLOR(roomsColor)(blockRoom3)])
 
 # roof
-roof = PROD([QUOTE([-6,8,-6]),QUOTE([-5,8])])
+roof = PROD([QUOTE([-7,6,-7]),QUOTE([-6,6])])
 
 #two_and_half_model = STRUCT([floor0, T(3)(6)(floor1), T(3)(12)(floor2), T(3)(18)(floor3), T(3)(24)(roof)])
 
