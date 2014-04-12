@@ -1,3 +1,5 @@
+# homework 2 - exercise 2 - Marco Virgadamo - 435859
+
 from exercise1 import *
 
 def curveDoor(width):
@@ -163,7 +165,7 @@ verticalWestBlock_3D = T([1,2,3])([13,5,19])(R([1,2])(PI/2)(R([2,3])(PI/2)(westB
 verticalEastBlock_3D = T([1,2,3])([7,13,19])(R([1,2])(PI*1.5)(R([2,3])(PI/2)(eastBlock_3D)))
 verticalSouthBlock_3D = T([1,2,3])([14,12,19])(R([1,2])(PI)(R([2,3])(PI/2)(southBlock_3D)))
 
-solid_model_3D = STRUCT([
+building = STRUCT([
 	internal_model_3D, 
 	verticalNorth_3D, 
 	verticalWest_3D, 
@@ -179,4 +181,32 @@ solid_model_3D = STRUCT([
 	verticalSouthBlock_3D
 	])
 
-VIEW(solid_model_3D)
+def stairs (width,lenght,height,steps):
+	stairs = STRUCT([CUBOID([width,lenght,0])])
+	for i in range(steps):
+		newStep = T(2)(i*float(lenght)/steps)(CUBOID([width, float(lenght)/steps, (float(height)/steps)*i]))
+		stairs = STRUCT([stairs, newStep])
+	return stairs
+
+pianerottoloW = T([1,2])([20,16])(CUBOID([2,2,3]))
+stairsSW = T([1,2])([28,16])(R([1,2])(PI/2)(stairs(2,6,3,15)))
+stairsWW = T([1,2,3])([22,16,3])(R([1,2])(PI)(stairs(2,6,3,15)))
+stairsW = STRUCT([stairsSW, stairsWW, pianerottoloW])
+
+pianerottoloE = T([1,2])([-2,16])(CUBOID([2,2,3]))
+stairsSE = T([1,2])([-8,18])(R([1,2])(PI*1.5)(stairs(2,6,3,15)))
+stairsEE = T([1,2,3])([0,16,3])(R([1,2])(PI)(stairs(2,6,3,15)))
+stairsE = STRUCT([stairsSE, stairsEE, pianerottoloE])
+
+frontal_stairs = T([1,2])([6,21])(CUBOID([8,0.5,0.5]))
+
+stairs_all = STRUCT([stairsW,stairsE,frontal_stairs])
+
+complete_building_3D = STRUCT([
+	building,
+	stairs_all,
+
+	])
+	
+#VIEW(complete_building_3D)
+

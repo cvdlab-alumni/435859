@@ -1,4 +1,4 @@
-# exercise 1 - Marco Virgadamo - 435859
+# homework 2 - exercise 1 - Marco Virgadamo - 435859
 
 from larcc import *
 
@@ -139,4 +139,4 @@ roof_3D = extrudeZ(1)(roof)
 
 internal_model_3D = STRUCT([floor0_3D, T(3)(6)(floor1_3D), T(3)(12)(floor2_3D), T(3)(18)(floor3_3D), T(3)(24)(roof_3D)])
 
-VIEW(internal_model_3D)
+#VIEW(internal_model_3D)
