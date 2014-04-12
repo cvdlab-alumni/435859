@@ -83,10 +83,18 @@ garden3D = COLOR(colorRGB([0,60,0]))(extrudeZ(2.5)(garden2D))
 
 garden = T([1,2,3])([-80,-40,-6])(garden3D)
 
+water_material = [0.1,0.4,0.47,1,0,0,0,0.6,2,2,2,1,0,0,0,1,50]
+
+fountain_body = extrudeZ(1.5)(MAP(sphere1)(PROD([INTERVALS(2*PI)(32), QUOTE([4])])))
+water = MATERIAL(water_material)(T(3)(1)(extrudeZ(0.5)(MAP(sphere1)(PROD([INTERVALS(2*PI)(32), QUOTE([3])])))))
+fountain_empty = DIFFERENCE([fountain_body,water])
+fountain = T([2,3])([-24,-6])(STRUCT([fountain_empty,water]))
+
 area_with_details = STRUCT([
 	area,
 	trees,
-	garden
+	garden,
+	fountain
 	])
 	
 VIEW(area_with_details)
