@@ -208,5 +208,5 @@ complete_building_3D = STRUCT([
 
 	])
 	
-#VIEW(complete_building_3D)
+VIEW(complete_building_3D)
 
