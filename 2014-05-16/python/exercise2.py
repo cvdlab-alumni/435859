@@ -11,10 +11,7 @@ blockA = diagram2cell(master,blockA,0)
 blockA = diagram2cell(master,blockA,0)
 blockA = diagram2cell(master,blockA,0)
 
-
-
 blockHpcA = STRUCT(MKPOLS(blockA))
 blockHpcB = T(1)(9)(R([1,2])(-PI/2)(blockHpcA))
 
-
-VIEW(STRUCT([blockHpcA,blockHpcB,blockHpcC]))
+VIEW(STRUCT([blockHpcA,blockHpcB]))
