@@ -41,6 +41,7 @@ def tree(params):
 		])
 	return final
 
+# definisco blocchi edifici
 shapeA = [1,1,5]
 sizePatternsA = [[13.6],[11.6],[3.5]*4+[0.5]]
 blockA = assemblyDiagramInit(shapeA)(sizePatternsA)
@@ -53,6 +54,7 @@ blockA = diagram2cell(master,blockA,0)
 blockHpcA = STRUCT(MKPOLS(blockA))
 blockHpcB = T(1)(9)(R([1,2])(-PI/2)(blockHpcA))
 
+# definisco pianerottoli e scale
 pianerottolo1 = T(2)(-4.5)(CUBOID([9,4.5,.5]))
 stairs1 = T([1,2,3])([6.5,-4.5,0.5])(R([1,2])(PI)(stairs(2.5, 6, 1.75, 10)))
 stairs2 = T([1,2,3])([6.5,-10.5,0.5+1.75])(R([1,2])(0)(stairs(2.5, 6, 1.75, 10)))
@@ -60,6 +62,7 @@ pianerottolo2 = T([1,2,3])([4,-4.5-6-3,1.75])(CUBOID([5,3,.5]))
 pianerottolo = STRUCT([pianerottolo1,stairs1,stairs2,pianerottolo2])
 pianerottoli = STRUCT([pianerottolo,T(3)(3.5)]*3+[T([2])([-4.5])(CUBOID([9,4.5,.5]))])
 
+# cortile
 cortile = T([1,2])([-15,-4.5])(CUBOID([15,16.1,.5]))
 
 latoAiuola1 = [POLYLINE([[0,3.5],[0,0],[3.5,0]])]
@@ -91,6 +94,5 @@ zampa2 = COLOR(grigio_scuro)(T([1,2])([-3,5.5])(zampa))
 panchina = STRUCT([pianoPanchina,zampa1,zampa2])
 
 edifici = STRUCT([blockHpcA,blockHpcB,pianerottoli])
-
 VIEW(STRUCT([edifici,cortile,aiuola1,giardino,albero1,albero2,panchina]))
 

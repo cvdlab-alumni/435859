@@ -1,16 +1,28 @@
-# homework 3 - exercise 3 - Marco Virgadamo - 435859
+# homework 3 - exercise 4 - Marco Virgadamo - 435859
 
 from larcc import *
 
-DRAW = COMP([VIEW,STRUCT,MKPOLS])
+def diagram2cell(diagram,master,cell):
 
-# funzione per mappamento multiplo. Argomenti: sottodiagramma, lista di celle del sottodiagramma da eliminare, diagramma master, lista di celle del diagramma master in cui mappare il sotto diagramma (i numeri devono essere in riferimento alla numerazione del master originario).
-def multipleDiagram2cell(subDiagram,toRemove,master,toMerges):
-	subDiagram = subDiagram[0],[cell for k,cell in enumerate(subDiagram[1]) if not (k in toRemove)]
-	toMerges = list(sort(toMerges))
-	for i in range(len(toMerges)):
-		master = diagram2cell(subDiagram,master,toMerges[i]-i)
-	return master
+   # manipolo il diagram per farlo delle dimensioni esatte, e nella posizione esatta
+   mat = diagram2cellMatrix(diagram)(master,cell)
+   diagram =larApply(mat)(diagram)  
+   
+   # elimino dalle celle del master la cella target
+   master = master[0],[c for k,c in enumerate(master[1]) if k != cell]
+   
+   """
+   # yet to finish coding
+   masterBoundaryFaces = boundaryOfChain(CV,FV)([cell])
+   diagramBoundaryFaces = lar2boundaryFaces(CV,FV)
+   """
+   
+   # metto insieme i vertici e le celle senza duplicati
+   V, CV1, CV2, n12 = vertexSieve(master,diagram)
+   master = V, CV1+CV2
+   return master
+   
+DRAW = COMP([VIEW,STRUCT,MKPOLS])
 
 # esempio
 
@@ -26,7 +38,6 @@ hpc = SKEL_1(STRUCT(MKPOLS(master)))
 hpc = cellNumbering ((mV,mCV),hpc)(range(len(mCV)),YELLOW,5)
 hpc = cellNumbering ((mV,mVV),hpc)(range(len(mVV)),RED,1)
 VIEW(hpc)
-DRAW(master)
 
 # creo la struttura subDiagram
 subShape = [3,1,3]
@@ -38,17 +49,14 @@ shpc = SKEL_1(STRUCT(MKPOLS(subDiagram)))
 shpc = cellNumbering ((sV,sCV),shpc)(range(len(sCV)),YELLOW,5)
 shpc = cellNumbering ((sV,sVV),shpc)(range(len(sVV)),RED,1)
 VIEW(shpc)
-# noto che la cella relativa al buco della finesra che voglio fare ha numero 4, me la segno
 
-# applico questo diagramma a multiple celle del master con la funzione creata
-master = multipleDiagram2cell(subDiagram,[4],master,[3,13,8,4,9,14])
 
-# rivisualizzo il nuovo master
+master = diagram2cell(subDiagram,master,3)
+
+# rivisualizzo il nuovo master, notando che non ci sono vertici duplicati sovrapposti.
 mV,mCV = master
 mVV = [[i] for i in range(len(mV))]
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
 hpc = cellNumbering ((mV,mCV),hpc)(range(len(mCV)),YELLOW,5)
 hpc = cellNumbering ((mV,mVV),hpc)(range(len(mVV)),RED,1)
 VIEW(hpc)
-DRAW(master)
-
