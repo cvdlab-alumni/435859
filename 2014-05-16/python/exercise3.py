@@ -38,7 +38,7 @@ shpc = SKEL_1(STRUCT(MKPOLS(subDiagram)))
 shpc = cellNumbering ((sV,sCV),shpc)(range(len(sCV)),YELLOW,5)
 shpc = cellNumbering ((sV,sVV),shpc)(range(len(sVV)),RED,1)
 VIEW(shpc)
-# noto che la cella relativa al buco della finesra che voglio fare è la 4, me la segno
+# noto che la cella relativa al buco della finesra che voglio fare ha numero 4, me la segno
 
 # applico questo diagramma a multiple celle del master
 master = multipleDiagram2cell(subDiagram,[4],master,[3,13,8,4,9,14])
