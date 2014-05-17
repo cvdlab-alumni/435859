@@ -4,7 +4,7 @@ from larcc import *
 
 DRAW = COMP([VIEW,STRUCT,MKPOLS])
 
-# funzione per mappamento multiplo. Argomenti: sottodiagramma, lista di celle del sottodiagramma da eliminare, diagramma master, lista di celle del diagramma master in cui mappare il sotto diagramma (i numeri devono essere in riferimento alla numerazione del master originario.
+# funzione per mappamento multiplo. Argomenti: sottodiagramma, lista di celle del sottodiagramma da eliminare, diagramma master, lista di celle del diagramma master in cui mappare il sotto diagramma (i numeri devono essere in riferimento alla numerazione del master originario).
 def multipleDiagram2cell(subDiagram,toRemove,master,toMerges):
 	subDiagram = subDiagram[0],[cell for k,cell in enumerate(subDiagram[1]) if not (k in toRemove)]
 	toMerges = list(sort(toMerges))
