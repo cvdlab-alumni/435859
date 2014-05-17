@@ -32,8 +32,8 @@ DRAW(master)
 subShape = [3,1,3]
 subSizePatterns = [[1.5,2,1.5],[.5],[1,1,1]]
 subDiagram = assemblyDiagramInit(subShape)(subSizePatterns)
-sVV,sEV,sFV,sCV = gridSkeletons(subShape)
 sV,sCV = subDiagram
+sVV = [[i] for i in range(len(sV))]
 shpc = SKEL_1(STRUCT(MKPOLS(subDiagram)))
 shpc = cellNumbering ((sV,sCV),shpc)(range(len(sCV)),YELLOW,5)
 shpc = cellNumbering ((sV,sVV),shpc)(range(len(sVV)),RED,1)
