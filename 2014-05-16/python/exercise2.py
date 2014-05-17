@@ -1,4 +1,4 @@
-# homework 3 - exercise 2
+# homework 3 - exercise 2 - Marco Virgadamo - 435859
 
 from exercise1 import *
 

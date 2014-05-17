@@ -1,4 +1,4 @@
-# homework 3 - exercise 1
+# homework 3 - exercise 1 - Marco Virgadamo - 435859
 
 from larcc import *
 
@@ -64,8 +64,8 @@ master = diagram2cell(ringhiera,master,228)
 master = diagram2cell(ringhiera,master,229)
 master = diagram2cell(ringhiera,master,230)
 
-#DRAW(master)
+DRAW(master)
 
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
 hpc = cellNumbering (master,hpc)(range(len(master[1])),CYAN,1.5)
-#VIEW(STRUCT([hpc,SKEL_1(CUBOID([13.6,11.6,3.5]))]))
+VIEW(STRUCT([hpc]))
