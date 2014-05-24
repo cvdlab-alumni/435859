@@ -8,8 +8,9 @@ DRAW = COMP([VIEW,STRUCT,MKPOLS])
 def multipleDiagram2cell(subDiagram,toRemove,master,toMerges):
 	subDiagram = subDiagram[0],[cell for k,cell in enumerate(subDiagram[1]) if not (k in toRemove)]
 	toMerges = list(sort(toMerges))
+	toMerges.reverse()
 	for i in range(len(toMerges)):
-		master = diagram2cell(subDiagram,master,toMerges[i]-i)
+		master = diagram2cell(subDiagram,master,toMerges[i])
 	return master
 
 # esempio
