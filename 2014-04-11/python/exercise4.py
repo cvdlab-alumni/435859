@@ -5,7 +5,7 @@ from exercise3 import *
 def tree(params):
 	h,r = params
 	var = h-r
-	troncoLar = larCylinder([0.5,var])([32,1])
+	troncoLar = larCylinder(0.5,var)([32,1])
 	chiomaLar = larSphere(r)()
 	
 	tronco = STRUCT(MKPOLS(troncoLar))

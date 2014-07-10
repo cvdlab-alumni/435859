@@ -96,4 +96,4 @@ verticalEastLittle = T([1,2])([14,18])(R([1,2])(PI/2)(R([2,3])(PI/2)(eastLittle)
 mock_up_3D = STRUCT([two_and_half_model, verticalNorth, verticalWest, verticalEast, verticalSouthLateral1, verticalSouthLateral2, verticalSouthCentral, verticalWestLittle, verticalEastLittle])
 
 
-#VIEW(mock_up_3D)
+VIEW(mock_up_3D)
